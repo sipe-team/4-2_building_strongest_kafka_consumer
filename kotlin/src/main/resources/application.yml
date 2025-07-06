@@ -1,7 +1,0 @@
-server:
-  port: 9998
-spring:
-  kafka:
-    bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
-    topic:
-      message-process-topic: message-process-topic
