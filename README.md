@@ -19,7 +19,7 @@
 
 ## 카프카 핵심 가이드
 
-[책 구매 링크](https://product.kyobobook.co.kr/detail/S000201464167)
+[책 구매 링크](https://product.kyobobook.co.kr/detail/S000201464167)  
 [원서](<https://github.com/melkhazen/Kafka-The-Definitive-Guide-2nd-Edition-pdf/blob/main/Kafka%20The%20Definitive%20Guide%20Real-Time%20Data%20and%20Stream%20Processing%20at%20Scale,%20Second%20Edition%20by%20Gwen%20Shapira,%20Todd%20Palino,%20Rajini%20Sivaram,%20Krit%20Petty%20(z-lib.org).pdf>)
 
 ## 미션 진행
