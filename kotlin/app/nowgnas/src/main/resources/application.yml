@@ -5,3 +5,8 @@ spring:
   config:
     import:
       - beginner.yml
+  kafka:
+    topic:
+      consumer-practice: consumer-practice-topic
+    consumer:
+      group-id: consumer-practice
