@@ -12,8 +12,6 @@ import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
 import org.springframework.kafka.listener.ContainerProperties
 
-private const val CONCURRENCY = 1
-private const val LATEST = "latest"
 
 @EnableKafka
 @Configuration
@@ -23,6 +21,10 @@ class AckModeManualKafkaConsumerConfiguration(
     @Value("\${spring.kafka.consumer.group-id}")
     private val groupId: String,
 ) {
+    companion object {
+        private const val CONCURRENCY = 1
+        private const val LATEST = "latest"
+    }
 
     @Primary
     @Bean("ackModeManualKafkaConsumerFactory")
