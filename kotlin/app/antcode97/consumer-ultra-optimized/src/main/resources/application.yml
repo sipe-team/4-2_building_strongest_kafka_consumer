@@ -1,0 +1,51 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: kafka-consumer-ultra-optimized
+  
+  kafka:
+    bootstrap-servers: localhost:9092
+    
+    # Ultra Optimized 컨슈머 설정
+    consumer:
+      # 기본 설정
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      
+      # 그룹 ID 설정
+      group-id: ultra-optimized-consumer-group
+      
+      # 오프셋 리셋 정책
+      auto-offset-reset: earliest
+      
+      # 수동 커밋 설정
+      enable-auto-commit: false
+      auto-commit-interval: 0ms
+      
+      # 세션 타임아웃 설정 (안정성 향상)
+      session-timeout: 60000ms           # 60초
+      heartbeat-interval: 10000ms        # 10초
+      
+      # 핵심 설정: 극대량 처리
+      max-poll-records: 10000            # 한 번에 최대 10000개 레코드
+      fetch-min-size: 4096              # 최소 4KB (네트워크 효율성 극대화)
+      fetch-max-wait: 50ms              # 최대 50ms 대기 (빠른 응답)
+      
+      # 연결 설정 (빠른 재연결)
+      reconnect-backoff: 25ms
+      retry-backoff: 50ms
+      
+      # 고급 설정 (여유로운 폴링)
+      max-poll-interval: 600000ms       # 10분
+      request-timeout: 60000ms          # 60초
+      
+      # 파티션 할당 전략 (효율적인 할당)
+      partition-assignment-strategy: org.apache.kafka.clients.consumer.StickyAssignor
+
+logging:
+  level:
+    org.apache.kafka: INFO
+    team.sipe.antcode97.consumerultraoptimized: DEBUG
+    org.springframework.kafka: DEBUG 

@@ -1,0 +1,51 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: kafka-consumer-max-poll-100
+  
+  kafka:
+    bootstrap-servers: localhost:9092
+    
+    # max.poll.records = 100 컨슈머 설정
+    consumer:
+      # 기본 설정
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      
+      # 그룹 ID 설정
+      group-id: max-poll-100-consumer-group
+      
+      # 오프셋 리셋 정책
+      auto-offset-reset: earliest
+      
+      # 수동 커밋 설정
+      enable-auto-commit: false
+      auto-commit-interval: 0ms
+      
+      # 세션 타임아웃 설정
+      session-timeout: 30000ms
+      heartbeat-interval: 3000ms
+      
+      # 핵심 설정: max.poll.records = 100 (소량 처리)
+      max-poll-records: 100              # 한 번에 최대 100개 레코드
+      fetch-min-size: 1024              # 최소 1KB
+      fetch-max-wait: 500ms             # 최대 500ms 대기
+      
+      # 연결 설정
+      reconnect-backoff: 50ms
+      retry-backoff: 100ms
+      
+      # 고급 설정
+      max-poll-interval: 300000ms       # 5분
+      request-timeout: 30000ms
+      
+      # 파티션 할당 전략
+      partition-assignment-strategy: org.apache.kafka.clients.consumer.RangeAssignor
+
+logging:
+  level:
+    org.apache.kafka: INFO
+    team.sipe.antcode97.consumermaxpoll100: DEBUG
+    org.springframework.kafka: DEBUG 

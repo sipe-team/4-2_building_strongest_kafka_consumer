@@ -1,7 +1,0 @@
-server:
-  port: 9998
-
-spring:
-  config:
-    import:
-      - beginner.yml
